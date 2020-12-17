@@ -12,7 +12,9 @@ endif
 
 syn keyword webapplogError	error Error ERROR exception Exception FATAL
 
-syn match	webapplogDate	'^\[[0-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]\s[0-9][0-9]\:[0-9][0-9]\:[0-9][0-9],[0-9][0-9][0-9]\]' nextgroup=webappthread skipwhite
+syn match	webapplogAppVer	'^\S*\s-\s' nextgroup=webapplogDate skipwhite
+
+syn match	webapplogDate	'\[[0-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]\s[0-9][0-9]\:[0-9][0-9]\:[0-9][0-9],[0-9][0-9][0-9]\]' nextgroup=webappthread skipwhite
 
 syn match   webappthread  '\[\S\+\]'  nextgroup=webapplevel skipwhite
 
@@ -27,6 +29,7 @@ syn match   webappcategory '\w\+:\d\+\s\-\s'
 
 if !exists("did_webapplog_syntax_inits")
   let did_webapplog_syntax_inits = 1
+  hi link webapplogAppVer	Statement
   hi link webapplogDate 	Comment
   hi link webapplogHour 	Comment
   hi link webappthread   Type
